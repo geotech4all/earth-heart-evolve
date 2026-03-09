@@ -13,7 +13,15 @@ import NotifyForm from "@/components/NotifyForm";
 import { LogoIcon } from "@/components/LogoIcon";
 import { Mail, ArrowRight, ExternalLink } from "lucide-react";
 
-type Product = typeof PRODUCTS[0];
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  longDescription: string;
+  comingSoon?: boolean;
+  waitlistLink?: string;
+}
 
 const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
