@@ -11,7 +11,7 @@ import {
 import { PRODUCTS } from "@/lib/constants";
 import NotifyForm from "@/components/NotifyForm";
 import { LogoIcon } from "@/components/LogoIcon";
-import { Mail, ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Product {
   id: string;
@@ -27,21 +27,13 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
-  // Featured products for the hero - GraviMag Cloud is featured
-  const graviMagProduct = PRODUCTS.find(p => p.id === "gravimag-cloud");
-
   // Auto-swipe animation for hero section
   useEffect(() => {
     const timer = setInterval(() => {
       setFeaturedIndex(prev => (prev + 1) % PRODUCTS.length);
     }, 5000);
-
     return () => clearInterval(timer);
   }, []);
-
-  const handleContactSales = () => {
-    window.location.href = "mailto:support@geotech4all.com?subject=Inquiry about SoilCloud";
-  };
 
   const handleExploreClick = (product: Product) => {
     if (product.id === "soilcloud") {
@@ -53,56 +45,115 @@ const Products = () => {
     }
   };
 
+  const goToSlide = (index: number) => setFeaturedIndex(index);
+  const goPrev = () => setFeaturedIndex(prev => (prev - 1 + PRODUCTS.length) % PRODUCTS.length);
+  const goNext = () => setFeaturedIndex(prev => (prev + 1) % PRODUCTS.length);
+
+  const currentProduct = PRODUCTS[featuredIndex];
+
   return (
     <>
-      {/* Hero Section - GraviMag Cloud Featured */}
+      {/* Hero Section with swipe carousel */}
       <section className="relative pt-32 pb-20 bg-white overflow-hidden">
         <div className="container-wide">
           <div className="max-w-3xl animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">Our Products</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Our Products</h1>
             <p className="text-xl text-gray-600">
-              Explore our suite of innovative geoscience applications designed to streamline your workflow.
+              Explore our suite of innovative geoscience applications designed to streamline your workflow. Sign up to be notified when they launch!
             </p>
           </div>
 
-          {/* GraviMag Cloud Featured Banner */}
-          {graviMagProduct && (
-            <div className="mt-12 relative h-[400px] overflow-hidden rounded-2xl shadow-xl">
+          {/* Carousel Banner */}
+          <div className="mt-12 relative h-[400px] overflow-hidden rounded-2xl shadow-xl group">
+            {/* Slides */}
+            {PRODUCTS.map((product, index) => (
               <div
-                className="absolute inset-0 flex items-center"
+                key={product.id}
+                className={`absolute inset-0 flex items-center transition-opacity duration-700 ease-in-out ${
+                  index === featuredIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
                 style={{
-                  backgroundImage: `linear-gradient(135deg, rgba(88, 28, 135, 0.9), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1574629173169-7019b64ac722')`,
+                  backgroundImage: `linear-gradient(135deg, rgba(50, 50, 50, 0.85), rgba(0, 0, 0, 0.8)), url('${product.image}')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }}
               >
                 <div className="container-wide text-white p-8">
                   <div className="flex items-center gap-6 mb-4">
-                    <LogoIcon productId="gravimag-cloud" darkBackground />
+                    <LogoIcon productId={product.id} darkBackground />
                     <div>
-                      <span className="bg-geotech-red text-white text-xs font-bold px-3 py-1 rounded-full">
-                        Coming Soon
-                      </span>
-                      <h2 className="text-3xl font-bold mt-2">{graviMagProduct.name}</h2>
+                      {product.comingSoon && (
+                        <span className="bg-geotech-red text-white text-xs font-bold px-3 py-1 rounded-full">
+                          Coming Soon
+                        </span>
+                      )}
+                      <h2 className="text-3xl font-bold mt-2">{product.name}</h2>
                     </div>
                   </div>
-                  <p className="text-xl max-w-2xl mb-6">{graviMagProduct.longDescription}</p>
-                  <div className="space-y-3">
-                    <p className="text-sm text-gray-300 font-medium">
-                      Join the launch notification wait-list:
-                    </p>
+                  <p className="text-lg max-w-2xl mb-6">{product.longDescription}</p>
+
+                  {/* GraviMag Cloud specific CTA */}
+                  {product.id === "gravimag-cloud" ? (
+                    <div className="space-y-3">
+                      <p className="text-sm text-gray-300 font-medium">
+                        Join the launch notification wait-list:
+                      </p>
+                      <Button
+                        size="lg"
+                        className="bg-white text-gray-900 hover:bg-gray-200"
+                        onClick={() => window.open("https://bit.ly/GraviMagCloud", "_blank")}
+                      >
+                        Join Waitlist <ArrowRight className="ml-2" size={16} />
+                      </Button>
+                    </div>
+                  ) : product.id === "soilcloud" ? (
                     <Button
                       size="lg"
                       className="bg-white text-gray-900 hover:bg-gray-200"
-                      onClick={() => window.open("https://bit.ly/GraviMagCloud", "_blank")}
+                      onClick={() => window.open("https://soilcloud.tech/", "_blank")}
                     >
-                      Join Waitlist <ArrowRight className="ml-2" size={16} />
+                      Explore Now <ArrowRight className="ml-2" size={16} />
                     </Button>
-                  </div>
+                  ) : (
+                    <Button
+                      size="lg"
+                      className="bg-white text-gray-900 hover:bg-gray-200"
+                      onClick={() => handleExploreClick(product)}
+                    >
+                      Explore <ArrowRight className="ml-2" size={16} />
+                    </Button>
+                  )}
                 </div>
               </div>
+            ))}
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={goPrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white rounded-full p-2 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={goNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white rounded-full p-2 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Dot indicators */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {PRODUCTS.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    index === featuredIndex ? "bg-white scale-110" : "bg-white/40 hover:bg-white/60"
+                  }`}
+                />
+              ))}
             </div>
-          )}
+          </div>
         </div>
       </section>
 
