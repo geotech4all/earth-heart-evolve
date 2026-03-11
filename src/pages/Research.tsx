@@ -177,7 +177,7 @@ const Research = () => {
 
       <CallToAction
         title="Collaborate With Us"
-        subtitle="Interested in research collaboration or want to present at our next webinar?"
+        subtitle="Interested in R&D collaboration or want to present at our next webinar?"
         buttonText="Contact Us"
         buttonLink="/contact"
         backgroundClass="bg-geotech-gray"
