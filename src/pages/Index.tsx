@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FeaturedWebAppsSection from "@/components/home/FeaturedWebAppsSection";
@@ -31,6 +32,7 @@ const Index = () => {
 
   return (
     <>
+      <SEO title="Home" description="Geotech4All is a geo-data acquisition and analysis firm, leveraging cutting-edge technology and expert knowledge to deliver high-quality geoscience solutions." path="/" />
       <HeroSection geoKeywords={geoKeywords} />
       <ServicesSection />
       <FeaturedWebAppsSection />

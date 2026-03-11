@@ -7,6 +7,7 @@ import { CalendarDays, ExternalLink, BookOpen } from "lucide-react";
 import { format } from "date-fns";
 import SectionHeader from "@/components/SectionHeader";
 import CallToAction from "@/components/CallToAction";
+import SEO from "@/components/SEO";
 
 const Research = () => {
   const { data: webinars, isLoading: webinarsLoading } = useQuery({
@@ -40,7 +41,7 @@ const Research = () => {
 
   return (
     <>
-      {/* Hero */}
+      <SEO title="Research & Development" description="Stay updated with Geotech4All's R&D webinars, research insights, and collaborative geoscience initiatives." path="/research" />
       <section
         className="relative pt-32 pb-20 bg-geotech-black"
         style={{

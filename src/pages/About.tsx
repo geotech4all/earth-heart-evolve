@@ -2,10 +2,12 @@ import React from "react";
 import SectionHeader from "@/components/SectionHeader";
 import CallToAction from "@/components/CallToAction";
 import TeamSection from "@/components/TeamSection";
+import SEO from "@/components/SEO";
 
 const About = () => {
   return (
     <>
+      <SEO title="About Us" description="Learn about Geotech4All's mission, vision, and the team driving innovation in geoscience solutions across Africa." path="/about" />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-geotech-black" style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1501854140801-50d01698950b')`,

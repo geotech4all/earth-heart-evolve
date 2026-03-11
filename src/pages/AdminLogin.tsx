@@ -118,7 +118,7 @@ const AdminLogin = () => {
             onClick={async () => {
               setLoading(true);
               const { error } = await lovable.auth.signInWithOAuth("google", {
-                redirect_uri: window.location.origin,
+                redirect_uri: `${window.location.origin}/admin`,
               });
               if (error) {
                 toast({ title: "Google Sign-In Failed", description: error.message, variant: "destructive" });

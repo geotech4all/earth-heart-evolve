@@ -12,6 +12,7 @@ import { PRODUCTS } from "@/lib/constants";
 import NotifyForm from "@/components/NotifyForm";
 import { LogoIcon } from "@/components/LogoIcon";
 import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import SEO from "@/components/SEO";
 
 interface Product {
   id: string;
@@ -53,6 +54,7 @@ const Products = () => {
 
   return (
     <>
+      <SEO title="Products" description="Explore Geotech4All's innovative geoscience web applications — GraviMag Cloud, SoilCloud, Dar Zarrouk Analyser, and Nigeria GeoPortal." path="/products" />
       {/* Hero Section with swipe carousel */}
       <section className="relative pt-32 pb-20 bg-white overflow-hidden">
         <div className="container-wide">

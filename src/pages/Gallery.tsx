@@ -1,5 +1,6 @@
 import React from "react";
 import GalleryGrid from "@/components/GalleryGrid";
+import SEO from "@/components/SEO";
 
 const Gallery = () => {
   const galleryImages = [
@@ -17,7 +18,7 @@ const Gallery = () => {
 
   return (
     <>
-      {/* Hero Section */}
+      <SEO title="Gallery" description="Browse photos from Geotech4All's fieldwork, training sessions, events, and geoscience projects across Africa." path="/gallery" />
       <section className="relative pt-32 pb-20 bg-geotech-black" style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1472396961693-142e6e269027')`,
         backgroundSize: 'cover',

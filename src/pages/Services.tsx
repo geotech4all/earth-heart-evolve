@@ -4,6 +4,7 @@ import PartnersMarquee from "@/components/PartnersMarquee";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import CallToAction from "@/components/CallToAction";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import SEO from "@/components/SEO";
 
 const Services = () => {
   const partners = [
@@ -50,6 +51,7 @@ const Services = () => {
 
   return (
     <>
+      <SEO title="Services" description="Comprehensive geoscience solutions including geophysical surveys, hydrogeological assessments, GIS mapping, and environmental consulting." path="/services" />
       {/* Animated Hero Section */}
       <section className="relative pt-32 pb-20 bg-geotech-black overflow-hidden h-[70vh] min-h-[500px] flex items-center" style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))`,
