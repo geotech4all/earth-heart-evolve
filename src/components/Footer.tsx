@@ -5,9 +5,9 @@ import { SOCIAL_LINKS } from "@/lib/constants";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6">
+    <footer className="bg-gray-900 text-white pt-10 md:pt-12 pb-6">
       <div className="container-wide">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {/* Logo and Description */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
@@ -83,10 +83,13 @@ const Footer = () => {
           <p className="text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} Geotech4All. All rights reserved.
           </p>
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 md:mt-0 flex items-center gap-4">
             <p className="text-gray-400 text-sm">
               Company registration number: RC: 8852817 | Company No. 15807278 (UK)
             </p>
+            <Link to="/admin/login" className="text-gray-500 hover:text-gray-400 text-xs transition-colors">
+              Admin
+            </Link>
           </div>
         </div>
       </div>

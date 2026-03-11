@@ -64,7 +64,7 @@ const Products = () => {
           </div>
 
           {/* Carousel Banner */}
-          <div className="mt-12 relative h-[400px] overflow-hidden rounded-2xl shadow-xl group">
+          <div className="mt-8 md:mt-12 relative h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden rounded-xl md:rounded-2xl shadow-xl group">
             {/* Slides */}
             {PRODUCTS.map((product, index) => (
               <div

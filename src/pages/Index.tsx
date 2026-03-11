@@ -24,7 +24,7 @@ const Index = () => {
   const partners = [
     { name: "GeoHub" },
     { name: "GeoLab" },
-    { name: "R&D (Research and Development)" },
+    { name: "R&D" },
     { name: "IGFS Institute" },
     { name: "SoilCloud" }
   ];

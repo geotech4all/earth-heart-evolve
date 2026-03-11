@@ -51,7 +51,7 @@ const Research = () => {
       >
         <div className="container-wide text-white">
           <div className="max-w-3xl animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">R&D (Research and Development)</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Research and Development</h1>
             <p className="text-xl text-gray-300">
               Explore our research insights, attend webinars, and stay updated on the latest developments in geoscience.
             </p>
@@ -177,7 +177,7 @@ const Research = () => {
 
       <CallToAction
         title="Collaborate With Us"
-        subtitle="Interested in research collaboration or want to present at our next webinar?"
+        subtitle="Interested in R&D collaboration or want to present at our next webinar?"
         buttonText="Contact Us"
         buttonLink="/contact"
         backgroundClass="bg-geotech-gray"
