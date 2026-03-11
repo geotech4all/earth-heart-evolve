@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FeaturedWebAppsSection from "@/components/home/FeaturedWebAppsSection";

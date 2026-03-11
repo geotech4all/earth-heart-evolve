@@ -1,5 +1,6 @@
 import React from "react";
 import GalleryGrid from "@/components/GalleryGrid";
+import SEO from "@/components/SEO";
 
 const Gallery = () => {
   const galleryImages = [

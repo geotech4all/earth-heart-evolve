@@ -3,6 +3,7 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { SOCIAL_LINKS } from "@/lib/constants";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   const { toast } = useToast();

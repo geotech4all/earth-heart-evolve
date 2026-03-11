@@ -12,6 +12,7 @@ import { PRODUCTS } from "@/lib/constants";
 import NotifyForm from "@/components/NotifyForm";
 import { LogoIcon } from "@/components/LogoIcon";
 import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import SEO from "@/components/SEO";
 
 interface Product {
   id: string;

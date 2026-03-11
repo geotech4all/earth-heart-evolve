@@ -4,6 +4,7 @@ import PartnersMarquee from "@/components/PartnersMarquee";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import CallToAction from "@/components/CallToAction";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import SEO from "@/components/SEO";
 
 const Services = () => {
   const partners = [
