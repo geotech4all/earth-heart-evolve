@@ -51,6 +51,7 @@ const Contact = () => {
 
   return (
     <>
+      <SEO title="Contact" description="Get in touch with Geotech4All for inquiries, collaborations, or to discuss your geoscience needs." path="/contact" />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-geotech-black" style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1426604966848-d7adac402bff')`,
