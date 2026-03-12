@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-1 text-geotech-red" />
-                <span className="text-gray-300">Lagos, Nigeria & London, UK</span>
+                <span className="text-gray-300">Lagos, Nigeria & UK</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-geotech-red" />
