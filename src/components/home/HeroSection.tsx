@@ -14,7 +14,7 @@ const HeroSection = ({ geoKeywords }: HeroSectionProps) => {
     }}>
       <div className="container-wide text-white py-20">
         <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal mb-4 md:mb-6 leading-tight">
             We power the future of{" "}
             <AnimatedText
               words={geoKeywords}
