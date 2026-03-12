@@ -94,8 +94,10 @@ export default {
 				'float': 'float 3s ease-in-out infinite'
 			},
 			fontFamily: {
-				inter: ['Inter', 'sans-serif'],
-				montserrat: ['Montserrat', 'sans-serif']
+				sans: ['DM Sans', 'sans-serif'],
+				heading: ['DM Serif Display', 'serif'],
+				inter: ['DM Sans', 'sans-serif'],
+				montserrat: ['DM Serif Display', 'serif']
 			}
 		}
 	},
