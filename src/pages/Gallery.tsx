@@ -8,6 +8,8 @@ import geologyDept from "@/assets/gallery/geology-dept.png";
 import fieldworkEquipment from "@/assets/gallery/fieldwork-equipment.png";
 import fieldworkTeam from "@/assets/gallery/fieldwork-team.png";
 import wellInspection from "@/assets/gallery/well-inspection.png";
+import ertEquipment from "@/assets/gallery/ert-equipment.png";
+import fieldSurvey from "@/assets/gallery/field-survey.png";
 
 const Gallery = () => {
   const galleryImages = [
@@ -17,6 +19,8 @@ const Gallery = () => {
     { id: "4", src: fieldworkEquipment, alt: "Field data acquisition with PQWT equipment", category: "Fieldwork" },
     { id: "5", src: fieldworkTeam, alt: "Geotech4All team conducting geophysical survey", category: "Fieldwork" },
     { id: "6", src: wellInspection, alt: "Well inspection and water level measurement", category: "Fieldwork" },
+    { id: "7", src: ertEquipment, alt: "ERT equipment setup - resistivity meter and cables", category: "Fieldwork" },
+    { id: "8", src: fieldSurvey, alt: "Geophysical field survey with electrode array", category: "Fieldwork" },
   ];
 
   const categories = ["Training", "Fieldwork"];
