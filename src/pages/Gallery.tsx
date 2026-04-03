@@ -2,25 +2,30 @@ import React from "react";
 import GalleryGrid from "@/components/GalleryGrid";
 import SEO from "@/components/SEO";
 
+import trainingLab from "@/assets/gallery/training-lab.png";
+import geologicMap from "@/assets/gallery/geologic-map.png";
+import geologyDept from "@/assets/gallery/geology-dept.png";
+import fieldworkEquipment from "@/assets/gallery/fieldwork-equipment.png";
+import fieldworkTeam from "@/assets/gallery/fieldwork-team.png";
+import wellInspection from "@/assets/gallery/well-inspection.png";
+
 const Gallery = () => {
   const galleryImages = [
-    { id: "1", src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=400", alt: "River between mountains", category: "Fieldwork" },
-    { id: "2", src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400", alt: "Mountain landscape", category: "Fieldwork" },
-    { id: "3", src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400", alt: "GIS Training", category: "Training" },
-    { id: "4", src: "https://images.unsplash.com/photo-1526666923127-b2970f64b422?w=400", alt: "Trees near rocky mountain", category: "Fieldwork" },
-    { id: "5", src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400", alt: "Mountain vista", category: "Fieldwork" },
-    { id: "6", src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400", alt: "Training session", category: "Training" },
-    { id: "7", src: "https://images.unsplash.com/photo-1533417463899-43a5659a4fc2?w=400", alt: "Aerial view", category: "Maps" },
-    { id: "8", src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400", alt: "Conference", category: "Events" },
+    { id: "1", src: trainingLab, alt: "GIS and geoscience training session in the lab", category: "Training" },
+    { id: "2", src: geologicMap, alt: "Presenting a geologic map at Geotech4All training", category: "Training" },
+    { id: "3", src: geologyDept, alt: "Geology department - student with geological maps", category: "Training" },
+    { id: "4", src: fieldworkEquipment, alt: "Field data acquisition with PQWT equipment", category: "Fieldwork" },
+    { id: "5", src: fieldworkTeam, alt: "Geotech4All team conducting geophysical survey", category: "Fieldwork" },
+    { id: "6", src: wellInspection, alt: "Well inspection and water level measurement", category: "Fieldwork" },
   ];
 
-  const categories = ["Fieldwork", "Training", "Maps", "Events"];
+  const categories = ["Training", "Fieldwork"];
 
   return (
     <>
       <SEO title="Gallery" description="Browse photos from Geotech4All's fieldwork, training sessions, events, and geoscience projects across Africa." path="/gallery" />
       <section className="relative pt-32 pb-20 bg-geotech-black" style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1472396961693-142e6e269027')`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${fieldworkTeam}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}>
@@ -34,7 +39,6 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
       <section className="section-padding bg-white">
         <div className="container-wide">
           <div className="mb-12 text-center">
