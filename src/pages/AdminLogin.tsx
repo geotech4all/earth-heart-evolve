@@ -20,21 +20,25 @@ const AdminLogin = () => {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        const { data } = await supabase.rpc("has_role", {
-          _user_id: session.user.id,
-          _role: "admin",
+      const { data: isAdmin } = await supabase.rpc("has_role", {
+          _user_id: session.user.id, _role: "admin",
         });
-        if (data) navigate("/admin");
+        const { data: isHr } = await supabase.rpc("has_role", {
+          _user_id: session.user.id, _role: "hr",
+        });
+        if (isAdmin || isHr) navigate("/admin");
       }
     };
     
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
-        const { data } = await supabase.rpc("has_role", {
-          _user_id: session.user.id,
-          _role: "admin",
+        const { data: isAdmin } = await supabase.rpc("has_role", {
+          _user_id: session.user.id, _role: "admin",
         });
-        if (data) navigate("/admin");
+        const { data: isHr } = await supabase.rpc("has_role", {
+          _user_id: session.user.id, _role: "hr",
+        });
+        if (isAdmin || isHr) navigate("/admin");
       }
     });
 
@@ -50,13 +54,15 @@ const AdminLogin = () => {
       if (error) throw error;
 
       const { data: isAdmin } = await supabase.rpc("has_role", {
-        _user_id: data.user.id,
-        _role: "admin",
+        _user_id: data.user.id, _role: "admin",
+      });
+      const { data: isHr } = await supabase.rpc("has_role", {
+        _user_id: data.user.id, _role: "hr",
       });
 
-      if (!isAdmin) {
+      if (!isAdmin && !isHr) {
         await supabase.auth.signOut();
-        toast({ title: "Access Denied", description: "You do not have admin privileges.", variant: "destructive" });
+        toast({ title: "Access Denied", description: "You do not have admin or HR privileges.", variant: "destructive" });
         return;
       }
 
