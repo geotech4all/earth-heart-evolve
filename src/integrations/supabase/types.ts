@@ -14,6 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
+      departments: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      onboarding_checklists: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          id: string
+          is_completed: boolean
+          item_name: string
+          staff_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          item_name: string
+          staff_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          item_name?: string
+          staff_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "onboarding_checklists_staff_id_fkey"
+            columns: ["staff_id"]
+            isOneToOne: false
+            referencedRelation: "staff"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       research_insights: {
         Row: {
           category: string | null
@@ -50,6 +106,125 @@ export type Database = {
           summary?: string | null
           title?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      staff: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          department_id: string | null
+          email: string
+          first_name: string
+          hire_date: string
+          id: string
+          last_name: string
+          phone: string | null
+          profile_photo_url: string | null
+          role_id: string | null
+          status: Database["public"]["Enums"]["staff_status"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          department_id?: string | null
+          email: string
+          first_name: string
+          hire_date?: string
+          id?: string
+          last_name: string
+          phone?: string | null
+          profile_photo_url?: string | null
+          role_id?: string | null
+          status?: Database["public"]["Enums"]["staff_status"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          department_id?: string | null
+          email?: string
+          first_name?: string
+          hire_date?: string
+          id?: string
+          last_name?: string
+          phone?: string | null
+          profile_photo_url?: string | null
+          role_id?: string | null
+          status?: Database["public"]["Enums"]["staff_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "staff_department_id_fkey"
+            columns: ["department_id"]
+            isOneToOne: false
+            referencedRelation: "departments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "staff_role_id_fkey"
+            columns: ["role_id"]
+            isOneToOne: false
+            referencedRelation: "staff_roles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      staff_documents: {
+        Row: {
+          document_name: string
+          document_type: string | null
+          file_url: string
+          id: string
+          staff_id: string
+          uploaded_at: string
+        }
+        Insert: {
+          document_name: string
+          document_type?: string | null
+          file_url: string
+          id?: string
+          staff_id: string
+          uploaded_at?: string
+        }
+        Update: {
+          document_name?: string
+          document_type?: string | null
+          file_url?: string
+          id?: string
+          staff_id?: string
+          uploaded_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "staff_documents_staff_id_fkey"
+            columns: ["staff_id"]
+            isOneToOne: false
+            referencedRelation: "staff"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      staff_roles: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
         }
         Relationships: []
       }
@@ -125,6 +300,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user" | "hr"
+      staff_status: "onboarding" | "active" | "inactive"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -253,6 +429,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user", "hr"],
+      staff_status: ["onboarding", "active", "inactive"],
     },
   },
 } as const
