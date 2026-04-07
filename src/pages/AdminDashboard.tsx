@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, CalendarDays, BookOpen, Users, Building2, UserCog } from "lucide-react";
+import { LogOut, CalendarDays, BookOpen, Users, Building2, UserCog, FolderKanban, ClipboardCheck } from "lucide-react";
 import WebinarsManager from "@/components/admin/WebinarsManager";
 import InsightsManager from "@/components/admin/InsightsManager";
 import StaffManager from "@/components/admin/StaffManager";
 import DepartmentsManager from "@/components/admin/DepartmentsManager";
 import StaffRolesManager from "@/components/admin/StaffRolesManager";
+import ProjectsManager from "@/components/admin/ProjectsManager";
+import AssessmentsManager from "@/components/admin/AssessmentsManager";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -25,8 +27,11 @@ const AdminDashboard = () => {
       const { data: isHr } = await supabase.rpc("has_role", {
         _user_id: session.user.id, _role: "hr",
       });
+      const { data: isPm } = await supabase.rpc("has_role", {
+        _user_id: session.user.id, _role: "project_manager",
+      });
 
-      if (!isAdmin && !isHr) { navigate("/admin/login"); return; }
+      if (!isAdmin && !isHr && !isPm) { navigate("/admin/login"); return; }
       setUserId(session.user.id);
     };
 
@@ -62,10 +67,16 @@ const AdminDashboard = () => {
       </header>
 
       <div className="container-wide py-8">
-        <Tabs defaultValue="staff">
+        <Tabs defaultValue="projects">
           <TabsList className="mb-8 flex-wrap">
+            <TabsTrigger value="projects" className="gap-2">
+              <FolderKanban size={14} /> Projects
+            </TabsTrigger>
             <TabsTrigger value="staff" className="gap-2">
               <Users size={14} /> Staff
+            </TabsTrigger>
+            <TabsTrigger value="assessments" className="gap-2">
+              <ClipboardCheck size={14} /> Assessments
             </TabsTrigger>
             <TabsTrigger value="departments" className="gap-2">
               <Building2 size={14} /> Departments
@@ -81,8 +92,14 @@ const AdminDashboard = () => {
             </TabsTrigger>
           </TabsList>
 
+          <TabsContent value="projects">
+            <ProjectsManager userId={userId} />
+          </TabsContent>
           <TabsContent value="staff">
             <StaffManager userId={userId} />
+          </TabsContent>
+          <TabsContent value="assessments">
+            <AssessmentsManager userId={userId} />
           </TabsContent>
           <TabsContent value="departments">
             <DepartmentsManager />
