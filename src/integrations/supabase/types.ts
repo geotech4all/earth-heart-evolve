@@ -70,6 +70,286 @@ export type Database = {
           },
         ]
       }
+      performance_reviews: {
+        Row: {
+          areas_for_improvement: string | null
+          created_at: string
+          goals: string | null
+          id: string
+          rating: number
+          review_period: string
+          reviewer_id: string | null
+          staff_id: string
+          status: Database["public"]["Enums"]["review_status"]
+          strengths: string | null
+          updated_at: string
+        }
+        Insert: {
+          areas_for_improvement?: string | null
+          created_at?: string
+          goals?: string | null
+          id?: string
+          rating?: number
+          review_period: string
+          reviewer_id?: string | null
+          staff_id: string
+          status?: Database["public"]["Enums"]["review_status"]
+          strengths?: string | null
+          updated_at?: string
+        }
+        Update: {
+          areas_for_improvement?: string | null
+          created_at?: string
+          goals?: string | null
+          id?: string
+          rating?: number
+          review_period?: string
+          reviewer_id?: string | null
+          staff_id?: string
+          status?: Database["public"]["Enums"]["review_status"]
+          strengths?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "performance_reviews_staff_id_fkey"
+            columns: ["staff_id"]
+            isOneToOne: false
+            referencedRelation: "staff"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_assessments: {
+        Row: {
+          assessor_id: string | null
+          comments: string | null
+          created_at: string
+          field_safety_score: number | null
+          id: string
+          overall_score: number | null
+          project_id: string
+          report_quality_score: number | null
+          timeline_adherence_score: number | null
+        }
+        Insert: {
+          assessor_id?: string | null
+          comments?: string | null
+          created_at?: string
+          field_safety_score?: number | null
+          id?: string
+          overall_score?: number | null
+          project_id: string
+          report_quality_score?: number | null
+          timeline_adherence_score?: number | null
+        }
+        Update: {
+          assessor_id?: string | null
+          comments?: string | null
+          created_at?: string
+          field_safety_score?: number | null
+          id?: string
+          overall_score?: number | null
+          project_id?: string
+          report_quality_score?: number | null
+          timeline_adherence_score?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_assessments_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_milestones: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          id: string
+          is_completed: boolean
+          project_id: string
+          target_date: string | null
+          title: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          project_id: string
+          target_date?: string | null
+          title: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          project_id?: string
+          target_date?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_milestones_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_tasks: {
+        Row: {
+          assigned_to: string | null
+          completed_at: string | null
+          created_at: string
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: Database["public"]["Enums"]["task_priority"]
+          project_id: string
+          status: Database["public"]["Enums"]["task_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: Database["public"]["Enums"]["task_priority"]
+          project_id: string
+          status?: Database["public"]["Enums"]["task_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: Database["public"]["Enums"]["task_priority"]
+          project_id?: string
+          status?: Database["public"]["Enums"]["task_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_tasks_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "staff"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_tasks_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_updates: {
+        Row: {
+          content: string
+          created_at: string
+          created_by: string | null
+          id: string
+          project_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          project_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_updates_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          assigned_manager: string | null
+          budget: number | null
+          client_name: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          end_date: string | null
+          id: string
+          location: string | null
+          name: string
+          project_type: Database["public"]["Enums"]["project_type"]
+          start_date: string | null
+          status: Database["public"]["Enums"]["project_status"]
+          updated_at: string
+        }
+        Insert: {
+          assigned_manager?: string | null
+          budget?: number | null
+          client_name?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          location?: string | null
+          name: string
+          project_type?: Database["public"]["Enums"]["project_type"]
+          start_date?: string | null
+          status?: Database["public"]["Enums"]["project_status"]
+          updated_at?: string
+        }
+        Update: {
+          assigned_manager?: string | null
+          budget?: number | null
+          client_name?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          location?: string | null
+          name?: string
+          project_type?: Database["public"]["Enums"]["project_type"]
+          start_date?: string | null
+          status?: Database["public"]["Enums"]["project_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_assigned_manager_fkey"
+            columns: ["assigned_manager"]
+            isOneToOne: false
+            referencedRelation: "staff"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       research_insights: {
         Row: {
           category: string | null
@@ -168,6 +448,50 @@ export type Database = {
             columns: ["role_id"]
             isOneToOne: false
             referencedRelation: "staff_roles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      staff_competencies: {
+        Row: {
+          certification_date: string | null
+          certification_name: string | null
+          created_at: string
+          expiry_date: string | null
+          id: string
+          proficiency_level: Database["public"]["Enums"]["proficiency_level"]
+          skill_name: string
+          staff_id: string
+          updated_at: string
+        }
+        Insert: {
+          certification_date?: string | null
+          certification_name?: string | null
+          created_at?: string
+          expiry_date?: string | null
+          id?: string
+          proficiency_level?: Database["public"]["Enums"]["proficiency_level"]
+          skill_name: string
+          staff_id: string
+          updated_at?: string
+        }
+        Update: {
+          certification_date?: string | null
+          certification_name?: string | null
+          created_at?: string
+          expiry_date?: string | null
+          id?: string
+          proficiency_level?: Database["public"]["Enums"]["proficiency_level"]
+          skill_name?: string
+          staff_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "staff_competencies_staff_id_fkey"
+            columns: ["staff_id"]
+            isOneToOne: false
+            referencedRelation: "staff"
             referencedColumns: ["id"]
           },
         ]
@@ -300,7 +624,18 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user" | "hr" | "project_manager"
+      proficiency_level: "beginner" | "intermediate" | "advanced" | "expert"
+      project_status:
+        | "planning"
+        | "active"
+        | "on_hold"
+        | "completed"
+        | "cancelled"
+      project_type: "field" | "internal"
+      review_status: "draft" | "submitted" | "acknowledged"
       staff_status: "onboarding" | "active" | "inactive"
+      task_priority: "low" | "medium" | "high" | "critical"
+      task_status: "todo" | "in_progress" | "review" | "done"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -429,7 +764,19 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user", "hr", "project_manager"],
+      proficiency_level: ["beginner", "intermediate", "advanced", "expert"],
+      project_status: [
+        "planning",
+        "active",
+        "on_hold",
+        "completed",
+        "cancelled",
+      ],
+      project_type: ["field", "internal"],
+      review_status: ["draft", "submitted", "acknowledged"],
       staff_status: ["onboarding", "active", "inactive"],
+      task_priority: ["low", "medium", "high", "critical"],
+      task_status: ["todo", "in_progress", "review", "done"],
     },
   },
 } as const
