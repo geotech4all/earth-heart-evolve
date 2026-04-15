@@ -350,6 +350,121 @@ export type Database = {
           },
         ]
       }
+      quotation_items: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string
+          id: string
+          item_number: number
+          phase_name: string | null
+          quantity: number | null
+          quotation_id: string
+          sort_order: number
+          unit: string | null
+          unit_rate: number | null
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          description: string
+          id?: string
+          item_number?: number
+          phase_name?: string | null
+          quantity?: number | null
+          quotation_id: string
+          sort_order?: number
+          unit?: string | null
+          unit_rate?: number | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string
+          id?: string
+          item_number?: number
+          phase_name?: string | null
+          quantity?: number | null
+          quotation_id?: string
+          sort_order?: number
+          unit?: string | null
+          unit_rate?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotation_items_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: false
+            referencedRelation: "quotations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quotations: {
+        Row: {
+          client_address: string | null
+          client_name: string
+          client_phone: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          prepared_by: string | null
+          project_description: string | null
+          project_id: string | null
+          project_name: string
+          quotation_date: string
+          quote_number: string
+          status: Database["public"]["Enums"]["quotation_status"]
+          terms_and_conditions: string | null
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          client_address?: string | null
+          client_name: string
+          client_phone?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          prepared_by?: string | null
+          project_description?: string | null
+          project_id?: string | null
+          project_name: string
+          quotation_date?: string
+          quote_number: string
+          status?: Database["public"]["Enums"]["quotation_status"]
+          terms_and_conditions?: string | null
+          total_amount?: number
+          updated_at?: string
+        }
+        Update: {
+          client_address?: string | null
+          client_name?: string
+          client_phone?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          prepared_by?: string | null
+          project_description?: string | null
+          project_id?: string | null
+          project_name?: string
+          quotation_date?: string
+          quote_number?: string
+          status?: Database["public"]["Enums"]["quotation_status"]
+          terms_and_conditions?: string | null
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotations_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       research_insights: {
         Row: {
           category: string | null
@@ -632,6 +747,7 @@ export type Database = {
         | "completed"
         | "cancelled"
       project_type: "field" | "internal"
+      quotation_status: "draft" | "sent" | "approved" | "rejected" | "completed"
       review_status: "draft" | "submitted" | "acknowledged"
       staff_status: "onboarding" | "active" | "inactive"
       task_priority: "low" | "medium" | "high" | "critical"
@@ -773,6 +889,7 @@ export const Constants = {
         "cancelled",
       ],
       project_type: ["field", "internal"],
+      quotation_status: ["draft", "sent", "approved", "rejected", "completed"],
       review_status: ["draft", "submitted", "acknowledged"],
       staff_status: ["onboarding", "active", "inactive"],
       task_priority: ["low", "medium", "high", "critical"],
