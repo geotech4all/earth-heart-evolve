@@ -11,6 +11,7 @@ import DepartmentsManager from "@/components/admin/DepartmentsManager";
 import StaffRolesManager from "@/components/admin/StaffRolesManager";
 import ProjectsManager from "@/components/admin/ProjectsManager";
 import AssessmentsManager from "@/components/admin/AssessmentsManager";
+import QuotationsManager from "@/components/admin/QuotationsManager";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
