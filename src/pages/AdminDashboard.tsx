@@ -73,6 +73,9 @@ const AdminDashboard = () => {
             <TabsTrigger value="projects" className="gap-2">
               <FolderKanban size={14} /> Projects
             </TabsTrigger>
+            <TabsTrigger value="quotations" className="gap-2">
+              <FileText size={14} /> Quotations/BOQ
+            </TabsTrigger>
             <TabsTrigger value="staff" className="gap-2">
               <Users size={14} /> Staff
             </TabsTrigger>
