@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, CalendarDays, BookOpen, Users, Building2, UserCog, FolderKanban, ClipboardCheck } from "lucide-react";
+import { LogOut, CalendarDays, BookOpen, Users, Building2, UserCog, FolderKanban, ClipboardCheck, FileText } from "lucide-react";
 import WebinarsManager from "@/components/admin/WebinarsManager";
 import InsightsManager from "@/components/admin/InsightsManager";
 import StaffManager from "@/components/admin/StaffManager";

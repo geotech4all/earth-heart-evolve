@@ -42,7 +42,7 @@ const QuotationDetail = ({ quotation, onBack }: QuotationDetailProps) => {
       .then(({ data }) => { if (data) setItems(data as LineItem[]); });
   }, [quotation.id]);
 
-  const updateStatus = async (newStatus: string) => {
+  const updateStatus = async (newStatus: "draft" | "sent" | "approved" | "rejected" | "completed") => {
     const { error } = await supabase.from("quotations").update({ status: newStatus }).eq("id", quotation.id);
     if (error) toast.error(error.message);
     else { setStatus(newStatus); toast.success("Status updated"); }
