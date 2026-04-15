@@ -99,6 +99,9 @@ const AdminDashboard = () => {
           <TabsContent value="projects">
             <ProjectsManager userId={userId} />
           </TabsContent>
+          <TabsContent value="quotations">
+            <QuotationsManager userId={userId} />
+          </TabsContent>
           <TabsContent value="staff">
             <StaffManager userId={userId} />
           </TabsContent>
