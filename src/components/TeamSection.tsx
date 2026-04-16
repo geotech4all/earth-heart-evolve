@@ -21,6 +21,13 @@ const TeamSection = () => {
       description: "Leading innovation in geoscience solutions and team development. With extensive expertise in geospatial analysis and subsurface mapping, Jeremiah drives the vision of Geotech4All forward.",
       imagePlaceholder: "./images/13.jpg",
       expertise: ["Geospatial Analysis", "Team Leadership", "Subsurface Mapping"]
+    },
+    {
+      name: "Dolapo Apata",
+      role: "Partner / Geoscientist",
+      description: "Partner at Geotech4All, contributing geoscience expertise and strategic insight to advance the firm's mission of delivering sustainable geoscience solutions across Africa.",
+      imagePlaceholder: "/placeholder.svg",
+      expertise: ["Geoscience", "Strategic Partnership", "Project Delivery"]
     }
     // Dr. Stanley Eze and Okediji Isaac are hidden as requested
   ];
