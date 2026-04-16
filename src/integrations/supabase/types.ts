@@ -431,7 +431,7 @@ export type Database = {
           project_id?: string | null
           project_name: string
           quotation_date?: string
-          quote_number: string
+          quote_number?: string
           status?: Database["public"]["Enums"]["quotation_status"]
           terms_and_conditions?: string | null
           total_amount?: number
@@ -729,6 +729,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_quote_number: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
