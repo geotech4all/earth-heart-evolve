@@ -44,8 +44,29 @@ const QuotationDetail = ({ quotation, onBack }: QuotationDetailProps) => {
 
   const updateStatus = async (newStatus: "draft" | "sent" | "approved" | "rejected" | "completed") => {
     const { error } = await supabase.from("quotations").update({ status: newStatus }).eq("id", quotation.id);
-    if (error) toast.error(error.message);
-    else { setStatus(newStatus); toast.success("Status updated"); }
+    if (error) { toast.error(error.message); return; }
+    setStatus(newStatus);
+    toast.success("Status updated");
+
+    // Auto-create project when quotation is approved
+    if (newStatus === "approved" && !quotation.project_id) {
+      const { data: project, error: projError } = await supabase.from("projects").insert({
+        name: quotation.project_name,
+        description: quotation.project_description || `Project from quotation ${quotation.quote_number}`,
+        client_name: quotation.client_name,
+        project_type: "field" as const,
+        status: "planning" as const,
+        budget: quotation.total_amount,
+      }).select("id").single();
+
+      if (projError) {
+        toast.error("Failed to create project: " + projError.message);
+      } else if (project) {
+        await supabase.from("quotations").update({ project_id: project.id }).eq("id", quotation.id);
+        quotation.project_id = project.id;
+        toast.success("Project automatically created from this quotation!");
+      }
+    }
   };
 
   const formatCurrency = (n: number) => new Intl.NumberFormat("en-NG", { style: "currency", currency: "NGN" }).format(n);
