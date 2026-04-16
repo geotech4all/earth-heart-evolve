@@ -32,7 +32,6 @@ interface QuotationFormProps {
 const QuotationForm = ({ userId, quotation, onSaved, onCancel }: QuotationFormProps) => {
   const isEdit = !!quotation;
   const [form, setForm] = useState({
-    quote_number: quotation?.quote_number || "",
     client_name: quotation?.client_name || "",
     client_address: quotation?.client_address || "",
     client_phone: quotation?.client_phone || "",
@@ -71,8 +70,8 @@ const QuotationForm = ({ userId, quotation, onSaved, onCancel }: QuotationFormPr
   const totalAmount = items.reduce((sum, item) => sum + Number(item.amount), 0);
 
   const handleSave = async () => {
-    if (!form.quote_number.trim() || !form.client_name.trim() || !form.project_name.trim()) {
-      toast.error("Quote number, client name, and project name are required"); return;
+    if (!form.client_name.trim() || !form.project_name.trim()) {
+      toast.error("Client name and project name are required"); return;
     }
     setSaving(true);
     try {
@@ -127,7 +126,8 @@ const QuotationForm = ({ userId, quotation, onSaved, onCancel }: QuotationFormPr
       <Card>
         <CardHeader><CardTitle>Quotation Details</CardTitle></CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
-          <Input placeholder="Quote Number (e.g. S-26-0006) *" value={form.quote_number} onChange={e => setForm(f => ({ ...f, quote_number: e.target.value }))} />
+          {isEdit && <Input value={quotation.quote_number} disabled className="bg-muted" />}
+          {!isEdit && <div className="flex items-center text-sm text-muted-foreground bg-muted rounded-md px-3 py-2">Quote # will be auto-assigned</div>}
           <Input type="date" value={form.quotation_date} onChange={e => setForm(f => ({ ...f, quotation_date: e.target.value }))} />
           <Input placeholder="Client Name *" value={form.client_name} onChange={e => setForm(f => ({ ...f, client_name: e.target.value }))} />
           <Input placeholder="Client Phone" value={form.client_phone} onChange={e => setForm(f => ({ ...f, client_phone: e.target.value }))} />
