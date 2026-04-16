@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import SectionHeader from "@/components/SectionHeader";
 import CallToAction from "@/components/CallToAction";
 import SEO from "@/components/SEO";
+import ResearchAcademy from "@/components/ResearchAcademy";
 
 const Research = () => {
   const { data: webinars, isLoading: webinarsLoading } = useQuery({
@@ -131,8 +132,11 @@ const Research = () => {
         </section>
       )}
 
+      {/* Research Academy - YouTube tutorials */}
+      <ResearchAcademy />
+
       {/* Research Insights */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-muted/30">
         <div className="container-wide">
           <SectionHeader
             title="Research Insights"
