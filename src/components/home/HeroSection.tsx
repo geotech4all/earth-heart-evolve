@@ -11,8 +11,7 @@ const HeroSection = ({ geoKeywords }: HeroSectionProps) => {
     <section
       className="relative min-h-screen flex items-center bg-gray-900"
       style={{
-        backgroundImage:
-          "linear-gradient(rgba(17, 24, 39, 0.82), rgba(17, 24, 39, 0.88)), url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1920&q=80')",
+        backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.85)), url(${heroImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
