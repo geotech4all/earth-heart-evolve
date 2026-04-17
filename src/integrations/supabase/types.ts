@@ -729,6 +729,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      current_user_email: { Args: never; Returns: string }
       generate_quote_number: { Args: never; Returns: string }
       has_role: {
         Args: {
