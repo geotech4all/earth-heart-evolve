@@ -48,8 +48,8 @@ const QuotationDetail = ({ quotation, onBack }: QuotationDetailProps) => {
     setStatus(newStatus);
     toast.success("Status updated");
 
-    // Auto-create project when quotation is approved
-    if (newStatus === "approved" && !quotation.project_id) {
+    // Auto-create project when quotation is approved or completed
+    if ((newStatus === "approved" || newStatus === "completed") && !quotation.project_id) {
       const { data: project, error: projError } = await supabase.from("projects").insert({
         name: quotation.project_name,
         description: quotation.project_description || `Project from quotation ${quotation.quote_number}`,
