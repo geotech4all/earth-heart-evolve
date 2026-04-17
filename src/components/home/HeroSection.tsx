@@ -7,11 +7,15 @@ interface HeroSectionProps {
 
 const HeroSection = ({ geoKeywords }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gray-900" style={{
-      backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1582഻'.replace('഻','') + 'pri-1582719471384-894fbb16e074?auto=format&fit=crop&w=1920&q=80')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+    <section
+      className="relative min-h-screen flex items-center bg-gray-900"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(17, 24, 39, 0.82), rgba(17, 24, 39, 0.88)), url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1920&q=80')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="container-wide text-white py-20">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
