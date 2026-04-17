@@ -7,15 +7,11 @@ interface HeroSectionProps {
 
 const HeroSection = ({ geoKeywords }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex items-center" style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1482938289607-e9573fc25ebb')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+    <section className="relative min-h-screen flex items-center bg-gray-900">
       <div className="container-wide text-white py-20">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-            We power the future of{" "}
+            Frontiering{" "}
             <AnimatedText
               words={geoKeywords}
               className="text-geotech-red font-bold"
@@ -23,7 +19,7 @@ const HeroSection = ({ geoKeywords }: HeroSectionProps) => {
             with data, innovation, and collaboration
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 text-gray-200">
-            A geo-data acquisition and analysis firm leveraging cutting-edge technology for high-quality geoscience solutions.
+            A geo-data acquisition, analysis, visualization, research and data management firm.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="/services" className="btn-primary text-center">

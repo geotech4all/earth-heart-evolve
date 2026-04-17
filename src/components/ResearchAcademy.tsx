@@ -30,7 +30,7 @@ const ResearchAcademy = () => {
     staleTime: 1000 * 60 * 30, // 30 minutes
   });
 
-  const videos = data?.videos ?? [];
+  const videos = (data?.videos ?? []).slice(0, 7);
   const featured = videos[0];
   const rest = videos.slice(1);
 
