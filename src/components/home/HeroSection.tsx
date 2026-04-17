@@ -1,5 +1,6 @@
 import React from "react";
 import AnimatedText from "@/components/AnimatedText";
+import heroImage from "@/assets/hero-geoscience.jpg";
 
 interface HeroSectionProps {
   geoKeywords: string[];
