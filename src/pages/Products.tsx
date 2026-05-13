@@ -22,6 +22,7 @@ interface Product {
   longDescription: string;
   comingSoon?: boolean;
   waitlistLink?: string;
+  externalLink?: string;
 }
 
 const Products = () => {
