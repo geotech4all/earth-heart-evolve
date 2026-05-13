@@ -170,9 +170,10 @@ const Products = () => {
                     className="w-full"
                     onClick={() => handleExploreClick(product)}
                   >
-                    {product.id === "soilcloud" ? "Visit SoilCloud" :
-                     product.comingSoon ? "Join Waitlist" : "Explore"}
-                    {product.id === "soilcloud" && <ExternalLink className="ml-2" size={14} />}
+                    {product.externalLink ? "Visit Site" :
+                     product.id === "soilcloud" ? "Visit SoilCloud" :
+                     product.waitlistLink ? "Join Waitlist" : "Explore"}
+                    {(product.externalLink || product.id === "soilcloud") && <ExternalLink className="ml-2" size={14} />}
                   </Button>
                 </CardFooter>
               </Card>
