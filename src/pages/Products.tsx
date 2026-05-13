@@ -38,9 +38,11 @@ const Products = () => {
   }, []);
 
   const handleExploreClick = (product: Product) => {
-    if (product.id === "soilcloud") {
+    if (product.externalLink) {
+      window.open(product.externalLink, "_blank");
+    } else if (product.id === "soilcloud") {
       window.open("https://soilcloud.tech/", "_blank");
-    } else if (product.id === "gravimag-cloud" && product.waitlistLink) {
+    } else if (product.waitlistLink) {
       window.open(product.waitlistLink, "_blank");
     } else {
       setSelectedProduct(product);
