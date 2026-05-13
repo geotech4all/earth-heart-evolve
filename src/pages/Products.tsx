@@ -22,6 +22,7 @@ interface Product {
   longDescription: string;
   comingSoon?: boolean;
   waitlistLink?: string;
+  externalLink?: string;
 }
 
 const Products = () => {
@@ -37,9 +38,11 @@ const Products = () => {
   }, []);
 
   const handleExploreClick = (product: Product) => {
-    if (product.id === "soilcloud") {
+    if (product.externalLink) {
+      window.open(product.externalLink, "_blank");
+    } else if (product.id === "soilcloud") {
       window.open("https://soilcloud.tech/", "_blank");
-    } else if (product.id === "gravimag-cloud" && product.waitlistLink) {
+    } else if (product.waitlistLink) {
       window.open(product.waitlistLink, "_blank");
     } else {
       setSelectedProduct(product);
@@ -94,37 +97,15 @@ const Products = () => {
                   </div>
                   <p className="text-lg max-w-2xl mb-6">{product.longDescription}</p>
 
-                  {/* GraviMag Cloud specific CTA */}
-                  {product.id === "gravimag-cloud" ? (
-                    <div className="space-y-3">
-                      <p className="text-sm text-gray-300 font-medium">
-                        Join the launch notification wait-list:
-                      </p>
-                      <Button
-                        size="lg"
-                        className="bg-white text-gray-900 hover:bg-gray-200"
-                        onClick={() => window.open("https://bit.ly/GraviMagCloud", "_blank")}
-                      >
-                        Join Waitlist <ArrowRight className="ml-2" size={16} />
-                      </Button>
-                    </div>
-                  ) : product.id === "soilcloud" ? (
-                    <Button
-                      size="lg"
-                      className="bg-white text-gray-900 hover:bg-gray-200"
-                      onClick={() => window.open("https://soilcloud.tech/", "_blank")}
-                    >
-                      Explore Now <ArrowRight className="ml-2" size={16} />
-                    </Button>
-                  ) : (
-                    <Button
-                      size="lg"
-                      className="bg-white text-gray-900 hover:bg-gray-200"
-                      onClick={() => handleExploreClick(product)}
-                    >
-                      Explore <ArrowRight className="ml-2" size={16} />
-                    </Button>
-                  )}
+                  <Button
+                    size="lg"
+                    className="bg-white text-gray-900 hover:bg-gray-200"
+                    onClick={() => handleExploreClick(product)}
+                  >
+                    {product.externalLink || product.id === "soilcloud" ? "Visit Site" : "Explore"}
+                    {(product.externalLink || product.id === "soilcloud") && <ExternalLink className="ml-2" size={14} />}
+                    {!product.externalLink && product.id !== "soilcloud" && <ArrowRight className="ml-2" size={16} />}
+                  </Button>
                 </div>
               </div>
             ))}
@@ -189,9 +170,10 @@ const Products = () => {
                     className="w-full"
                     onClick={() => handleExploreClick(product)}
                   >
-                    {product.id === "soilcloud" ? "Visit SoilCloud" :
+                    {product.externalLink ? "Visit Site" :
+                     product.id === "soilcloud" ? "Visit SoilCloud" :
                      product.comingSoon ? "Join Waitlist" : "Explore"}
-                    {product.id === "soilcloud" && <ExternalLink className="ml-2" size={14} />}
+                    {(product.externalLink || product.id === "soilcloud") && <ExternalLink className="ml-2" size={14} />}
                   </Button>
                 </CardFooter>
               </Card>

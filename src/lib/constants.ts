@@ -29,9 +29,17 @@ export const PRODUCTS = [
     name: "GraviMag Cloud",
     description: "Cloud-based gravity and magnetic data processing and interpretation platform.",
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
-    longDescription: "GraviMag Cloud is a powerful cloud-based platform for processing, modeling, and interpreting gravity and magnetic geophysical data. Designed for geoscientists working in mineral exploration, basin analysis, and crustal studies.",
+    longDescription: "GraviMag Cloud is a powerful cloud-based platform for processing, modeling, and interpreting gravity and magnetic geophysical data. Designed for geoscientists working in mineral exploration, basin analysis, and crustal studies. Launching this week — visit the live site to get started.",
+    externalLink: "https://gravimagcloud.com/"
+  },
+  {
+    id: "geosection",
+    name: "GeoSection",
+    description: "Build geo-electric sections right in your browser — free and open access.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+    longDescription: "GeoSection turns your VES soundings into clean, presentation-ready resistivity sections — with lithology, topography and one-click export. No accounts, no uploads to a server. Free and open access, launching right after GraviMag Cloud settles.",
     comingSoon: true,
-    waitlistLink: "https://bit.ly/GraviMagCloud"
+    externalLink: "https://geosection.netlify.app/"
   },
   {
     id: "nigeria-geoportal",
