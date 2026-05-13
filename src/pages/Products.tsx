@@ -172,7 +172,7 @@ const Products = () => {
                   >
                     {product.externalLink ? "Visit Site" :
                      product.id === "soilcloud" ? "Visit SoilCloud" :
-                     product.waitlistLink ? "Join Waitlist" : "Explore"}
+                     product.comingSoon ? "Join Waitlist" : "Explore"}
                     {(product.externalLink || product.id === "soilcloud") && <ExternalLink className="ml-2" size={14} />}
                   </Button>
                 </CardFooter>
